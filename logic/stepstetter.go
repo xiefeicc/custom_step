@@ -71,7 +71,7 @@ var steps = []struct {
 		max: 20000,
 	},
 }
-var hours = map[int]int{8: 1, 12: 2, 15: 3, 17: 4, 21: 5}
+var hours = map[int]int{8: 0, 12: 1, 15: 2, 17: 3, 21: 4}
 
 func getStep() string {
 	index, ok := hours[timeutils.GetBeijingTM().Hour()]
