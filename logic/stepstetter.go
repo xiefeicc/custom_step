@@ -4,10 +4,8 @@ import (
 	"custom_step/service"
 	"custom_step/timeutils"
 	"errors"
-	"fmt"
 	"log"
 	"math/rand"
-	"time"
 
 	"github.com/spf13/cast"
 )
@@ -76,7 +74,7 @@ var steps = []struct {
 var hours = map[int]int{8: 1, 12: 2, 15: 3, 17: 4, 21: 5}
 
 func getStep() string {
-	index, ok := hours[time.Now().Hour()]
+	index, ok := hours[timeutils.GetBeijingTM().Hour()]
 	if !ok {
 		return ""
 	}
@@ -85,7 +83,6 @@ func getStep() string {
 }
 
 func random(min, max int) int {
-	fmt.Println(timeutils.GetBeijingTM().Unix())
 	rnd := rand.New(rand.NewSource(timeutils.GetBeijingTM().UnixNano()))
 	return rnd.Intn(max-min) + min
 }
