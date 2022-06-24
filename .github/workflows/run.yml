@@ -22,6 +22,4 @@ jobs:
 
       - name: run
         run: |
-          user='${{ secrets.USER }}'
-          passwd='${{ secrets.PWD }}'
-          ./custom_step -user ${user} -password ${passwd}
+          ./custom_step -user ${{secrets.USER}} -password ${{secrets.PWD}}
