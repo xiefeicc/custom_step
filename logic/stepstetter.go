@@ -4,6 +4,7 @@ import (
 	"custom_step/service"
 	"custom_step/timeutils"
 	"errors"
+	"fmt"
 	"log"
 	"math/rand"
 	"time"
@@ -84,6 +85,7 @@ func getStep() string {
 }
 
 func random(min, max int) int {
+	fmt.Println(timeutils.GetBeijingTM().Unix())
 	rnd := rand.New(rand.NewSource(timeutils.GetBeijingTM().UnixNano()))
 	return rnd.Intn(max-min) + min
 }
