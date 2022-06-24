@@ -2,6 +2,7 @@ package logic
 
 import (
 	"custom_step/service"
+	"custom_step/timeutils"
 	"errors"
 	"log"
 	"math/rand"
@@ -40,7 +41,7 @@ func (s stepSetter) Do(user, pwd string) error {
 
 	step := getStep()
 	log.Println("update step:", step)
-	if err := s.miSrv.PushData(time.Now().Format("2006-01-02"), "12222", tokenInfo); err != nil {
+	if err := s.miSrv.PushData(timeutils.GetBeijingTM().Format("2006-01-02"), step, tokenInfo); err != nil {
 		return err
 	}
 	return nil
@@ -83,6 +84,6 @@ func getStep() string {
 }
 
 func random(min, max int) int {
-	rnd := rand.New(rand.NewSource(time.Now().UnixNano()))
+	rnd := rand.New(rand.NewSource(timeutils.GetBeijingTM().UnixNano()))
 	return rnd.Intn(max-min) + min
 }
