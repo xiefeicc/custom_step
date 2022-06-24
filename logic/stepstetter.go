@@ -3,6 +3,7 @@ package logic
 import (
 	"custom_step/service"
 	"errors"
+	"log"
 	"math/rand"
 	"time"
 
@@ -37,7 +38,9 @@ func (s stepSetter) Do(user, pwd string) error {
 		return err
 	}
 
-	if err := s.miSrv.PushData(time.Now().Format("2006-01-02"), getStep(), tokenInfo); err != nil {
+	step := getStep()
+	log.Println("update step:", step)
+	if err := s.miSrv.PushData(time.Now().Format("2006-01-02"), step, tokenInfo); err != nil {
 		return err
 	}
 	return nil
