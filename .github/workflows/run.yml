@@ -2,6 +2,7 @@ name: 定时修改步数
 on:
   schedule:
     - cron: '0 8,12,15,17,21 * * *'
+  workflow_dispatch:
 jobs:
   build:
     name: Build
