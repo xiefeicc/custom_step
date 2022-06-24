@@ -40,7 +40,7 @@ func (s stepSetter) Do(user, pwd string) error {
 
 	step := getStep()
 	log.Println("update step:", step)
-	if err := s.miSrv.PushData(time.Now().Format("2006-01-02"), step, tokenInfo); err != nil {
+	if err := s.miSrv.PushData(time.Now().Format("2006-01-02"), "12222", tokenInfo); err != nil {
 		return err
 	}
 	return nil
